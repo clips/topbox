@@ -21,9 +21,9 @@ gs = ['label1 label2', 'label1 label3']
 stmt.test(infer, gs)
 
 
-import numpy as np
 from sklearn.metrics import average_precision_score
 
+# array requires numpy and scipy
 y_true, y_score = stmt.results(gs, array=True)
 
 print(average_precision_score(y_true, y_score))
