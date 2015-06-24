@@ -7,7 +7,7 @@ from glob import glob
 from inspect import isgenerator
 
 # Authors: Chris Emmery
-# References: Ramage, Hall, ..., Manning (2012)
+# References: Ramage, Hall, Nallapati, Manning (2009)
 # License: BSD 3-Clause
 
 
