@@ -1,6 +1,10 @@
 # shed
 A small Python 3 wrapper around the Stanford Topic Modeling Toolbox (STMT) that makes working with L-LDA a bit easier; no need to leave the Python environment. More information on its workings can be found on [my blog](https://cmry.github.io/2015/06/18/shed/).
 
+# Setting up
+
+Just [download](http://nlp.stanford.edu/software/tmt/tmt-0.4/tmt-0.4.0.jar) STMTand put it in the `box` directory. After you can import `shed` from wherever you left it.
+
 # Example
 
 ``` python
