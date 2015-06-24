@@ -3,7 +3,7 @@ A small Python 3 wrapper around the Stanford Topic Modeling Toolbox (STMT) that 
 
 # Setting up
 
-Just [download](http://nlp.stanford.edu/software/tmt/tmt-0.4/tmt-0.4.0.jar) STMTand put it in the `box` directory. After you can import `shed` from wherever you left it.
+Just [download](http://nlp.stanford.edu/software/tmt/tmt-0.4/tmt-0.4.0.jar) STMT and put it in the `box` directory. After, import `shed` from wherever you left it.
 
 # Example
 
