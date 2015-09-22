@@ -1,16 +1,16 @@
-# shed
-A small Python 3 wrapper around the Stanford Topic Modeling Toolbox (STMT) that makes working with L-LDA a bit easier; no need to leave the Python environment. More information on its workings can be found on [my blog](https://cmry.github.io/2015/06/18/shed/).
+# topbox
+A small Python 3 wrapper around the Stanford Topic Modeling Toolbox (STMT) that makes working with L-LDA a bit easier; no need to leave the Python environment. More information on its workings can be found on [my blog](https://cmry.github.io/2015/06/18/topbox/).
 
 # Setting up
 
-Just [download](http://nlp.stanford.edu/software/tmt/tmt-0.4/tmt-0.4.0.jar) STMT and put it in the `box` directory. After, import `shed` from wherever you left it.
+Just [download](http://nlp.stanford.edu/software/tmt/tmt-0.4/tmt-0.4.0.jar) STMT and put it in the `box` directory. After, import `topbox` from wherever you left it.
 
 # Example
 
 ``` python
-import shed
+import topbox
 
-stmt = shed.STMT('bit_of_testing', epochs=10, mem=15000)
+stmt = topbox.STMT('bit_of_testing', epochs=10, mem=15000)
 
 
 space = ['text text more text', 'things to do with text']

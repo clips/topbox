@@ -25,7 +25,7 @@ class STMT:
     you have in Python code. After, the class can handle extracting the correct
     results (even in sklearn format), as well as cleaning up once you're done.
     Some examples of this will be given below, more information can be found
-    on https://fazzeh.github.io/2015/06/18/shed/.
+    on https://cmry.github.io/2015/06/18/topbox/.
 
     Parameters
     -----
@@ -54,7 +54,7 @@ class STMT:
     Attributes
     -----
     dir : string
-        Absolute path where the storage area of the shed is located.
+        Absolute path where the storage area of the topbox is located.
 
     Examples
     -----
@@ -71,10 +71,10 @@ class STMT:
             ['rugby', 'now add some confusing sentence with novel words what is
               happening']]
 
-    import shed
+    import topbox
 
-    stmt = shed.STMT('test_model')
-    stmt = shed.STMT('test_model', epochs=400, mem=14000)
+    stmt = topbox.STMT('test_model')
+    stmt = topbox.STMT('test_model', epochs=400, mem=14000)
 
     train_labels, train_space = zip(*train)
     test_labels, test_space = zip(*test)
