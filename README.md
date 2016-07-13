@@ -5,6 +5,19 @@ A small Python 3 wrapper around the Stanford Topic Modeling Toolbox (STMT) that 
 
 Just [download](http://nlp.stanford.edu/software/tmt/tmt-0.4/tmt-0.4.0.jar) STMT and put it in the `box` directory. After, import `topbox` from wherever you left it.
 
+On Linux, this would look something like this:
+
+``` shell
+$ cd ~
+$ git clone https://github.com/cmry/topbox
+$ cd ~/topbox/box
+$ wget http://nlp.stanford.edu/software/tmt/tmt-0.4/tmt-0.4.0.jar
+$ cd ~
+$ vi some_topbox_script.py
+```
+
+You can paste the code below in the script file to test if it's working.
+
 # Example
 
 ``` python
