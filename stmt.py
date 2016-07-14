@@ -336,7 +336,7 @@ class STMT:
             topic probabilities.
         """
         DTDA = 'document-topic-distributions-res'  # doctop file
-        LIDX = '00000/label-index'                 # label index
+        LIDX = '00000{0}label-index'.format(sep)   # label index
 
         orf = open("%s%s_%s%s%s.txt" % (self.dir, self.name, sep,
                                         'train', LIDX), 'r')
