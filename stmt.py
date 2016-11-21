@@ -1,3 +1,5 @@
+"""Python 2 & 3 wrapper around the Stanford Topic Modeling Toolbox."""
+
 from csv import writer, reader
 from re import sub
 from subprocess import call
@@ -6,12 +8,13 @@ from shutil import rmtree
 from glob import glob
 from inspect import isgenerator
 
-# Authors: Chris Emmery
-# References: Ramage, Hall, Nallapati, Manning (2009)
-# License: BSD 3-Clause
+# Authors:      Chris Emmery
+# References:   Ramage, Hall, Nallapati, Manning (2009)
+# License:      BSD 3-Clause
+# pylint:       disable=C0103
 
 
-class STMT:
+class STMT(object):
     """Stanford Topic Modelling Toolbox Wrapper.
 
     This is a wrapper Class around the Stanford Topic Modelling Toolbox. It
@@ -23,7 +26,7 @@ class STMT:
     you have in Python code. After, the class can handle extracting the correct
     results (even in sklearn format), as well as cleaning up once you're done.
     Some examples of this will be given below, more information can be found
-    on https://cmry.github.io/2015/06/18/topbox/.
+    on https://cmry.github.io/notes/topbox.
 
     Parameters
     ----------
@@ -93,8 +96,9 @@ class STMT:
     """
 
     def __init__(self, name, epochs=20, mem=7000, keep=True):
+        """Set paths and variables."""
         self.dir = path.dirname(path.realpath(__file__)) + \
-                   '{0}box{0}'.format(sep)
+            '{0}box{0}'.format(sep)
         self.name = name
         self.keep = keep
         self.epochs = epochs
@@ -178,7 +182,7 @@ class STMT:
     def scala(self, s, r=False):
         """Scala code replacer.
 
-        Handles the .scala text replacements. In the basefiles,the replace
+        Handles the .scala text replacements. In the basefiles, the replace
         targets are `modelfile` by default. This can also be used to flip
         number of the iterations.
 
@@ -338,13 +342,14 @@ class STMT:
         DTDA = 'document-topic-distributions-res'  # doctop file
         LIDX = '00000{0}label-index'.format(sep)   # label index
 
-        orf = open("%s%s_%s%s%s.txt" % (self.dir, self.name, sep,
-                                        'train', LIDX), 'r')
+        orf = open("{0}{1}_{2}{3}{4}.txt".format(
+            self.dir, self.name, 'train', sep, LIDX), 'r')
         label_index = orf.read().lower().split('\n')[:-1]
 
         lbf = \
-            open("%s%s_%s%s%s_%s-%s.csv" % (self.dir, self.name, 'train',
-                                            self.name, sep, 'test', DTDA), 'r')
+            open("{0}{1}_{2}{3}{4}_{5}-{6}.csv".format(
+                self.dir, self.name, 'train', sep, self.name, 'test', DTDA),
+                'r')
         predicted_weights = reader(lbf)
 
         y_true, y_score = self.get_scores(label_index, predicted_weights,
@@ -356,7 +361,7 @@ class STMT:
         if array:
             y_true, y_score = self.to_array(y_true, y_score)
 
-        self.cleanup(step='results')
+        # self.cleanup(step='results')
         return y_true, y_score
 
     def cleanup(self, rmall=False, step=False):
@@ -409,7 +414,7 @@ class STMT:
             self.store(batch_space, batch_labels, step)
         space, labels = None, None
         self.boot(step)
-        self.cleanup()
+        # self.cleanup()
 
     def train(self, space, labels):
         """Sugar train.
@@ -427,6 +432,7 @@ class STMT:
             List with labels where each index corresponds to the text in space.
         """
         self.run(space, labels, 'train')
+        exit()
 
     def test(self, space, labels):
         """Sugar test.

@@ -17,7 +17,7 @@ val tokenizer = {
   SimpleEnglishTokenizer() ~>            // tokenize on space and punctuation
   CaseFolder() ~>                        // lowercase everything
   WordsAndNumbersOnlyFilter() ~>         // ignore non-words and non-numbers
-  MinimumLengthFilter(2)                 // take terms with >=3 characters
+  MinimumLengthFilter(1)                 // take terms with >=3 characters
 }
 
 val text = {
@@ -25,9 +25,9 @@ val text = {
   Column(3) ~>                           // select column containing text
   TokenizeWith(tokenizer) ~>             // tokenize with tokenizer above
   TermCounter() ~>                       // collect counts (needed below)
-  TermMinimumDocumentCountFilter(4) ~>   // filter terms in <4 docs
-  TermDynamicStopListFilter(150) ~>      // filter out 30 most common terms
-  DocumentMinimumLengthFilter(5)         // take only docs with >=5 terms
+  TermMinimumDocumentCountFilter(1) ~>   // filter terms in <4 docs
+  TermDynamicStopListFilter(0) ~>      // filter out 30 most common terms
+  DocumentMinimumLengthFilter(1)         // take only docs with >=5 terms
 }
 
 // define fields from the dataset we are going to slice against
@@ -36,7 +36,7 @@ val labels = {
   Column(2) ~>                           // take column two, the year
   TokenizeWith(WhitespaceTokenizer()) ~> // turns label field into an array
   TermCounter() ~>                       // collect label counts
-  TermMinimumDocumentCountFilter(10)     // filter labels in < 10 docs
+  TermMinimumDocumentCountFilter(0)     // filter labels in < 10 docs
 }
 
 val dataset = LabeledLDADataset(text, labels);
