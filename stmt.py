@@ -168,8 +168,8 @@ class STMT(object):
         rock : string
             Basically the .read() contents of the original .scala file.
         """
-        wf = f.replace('_', self.name + '_')
-        f = f.replace('_', '')
+        wf = (self.name + '_').join(f.rsplit('_', 1))
+        f = ''.join(f.rsplit('_', 1))
         try:
             rf = open(wf, 'r')
         except IOError:
