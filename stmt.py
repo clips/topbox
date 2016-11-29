@@ -148,6 +148,7 @@ class STMT(object):
         csv_writer = writer(csv_file)
         for i, zipped in enumerate(zip(labels, space)):
             line = [str(i + 1), zipped[0], zipped[1]]
+            line = [i.encode('utf8') for i in line]
             csv_writer.writerow(line)
         csv_file.close()
 
