@@ -7,6 +7,7 @@ from os import path, remove, sep
 from shutil import rmtree
 from glob import glob
 from inspect import isgenerator
+from sys import version_info
 
 # Authors:      Chris Emmery
 # References:   Ramage, Hall, Nallapati, Manning (2009)
@@ -124,6 +125,7 @@ class STMT(object):
     def store(self, space, labels, vsp_type):
         """Data to csv storage.
 
+
         Stores a given (sub)vectorspace to the .csv format that STMT works
         with. The space should be a dict where the key is a tuple with (int,
         str), where int is the index number and str the document its topic
@@ -148,7 +150,8 @@ class STMT(object):
         csv_writer = writer(csv_file)
         for i, zipped in enumerate(zip(labels, space)):
             line = [str(i + 1), zipped[0], zipped[1]]
-            line = [i.encode('utf8') for i in line]
+            if version_info.major < 3:  # fix py2 compat
+                line = [i.encode('utf8') for i in line]
             csv_writer.writerow(line)
         csv_file.close()
 
