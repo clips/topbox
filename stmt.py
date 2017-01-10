@@ -198,7 +198,7 @@ class STMT(object):
         r : boolean, optional, default False
             Indicates old to new replace by default.
         """
-        prep, std = 'maxIterations = ', ' 5'
+        prep, std = 'maxIterations = ', '5'
         orig, new = 'modelfolder', self.dir + self.name + '_' + 'train'
         o_csv, n_csv = 'datafile.csv', self.dir + self.name + '_' + s + '.csv'
         f = self.dir + '_' + s + '.scala'
@@ -365,7 +365,7 @@ class STMT(object):
         if array:
             y_true, y_score = self.to_array(y_true, y_score)
 
-        # self.cleanup(step='results')
+        self.cleanup(step='results')
         return y_true, y_score
 
     def cleanup(self, rmall=False, step=False):
@@ -418,7 +418,7 @@ class STMT(object):
             self.store(batch_space, batch_labels, step)
         space, labels = None, None
         self.boot(step)
-        # self.cleanup()
+        self.cleanup()
 
     def train(self, space, labels):
         """Sugar train.
@@ -436,7 +436,6 @@ class STMT(object):
             List with labels where each index corresponds to the text in space.
         """
         self.run(space, labels, 'train')
-        exit()
 
     def test(self, space, labels):
         """Sugar test.
