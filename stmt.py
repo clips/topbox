@@ -98,8 +98,8 @@ class STMT(object):
 
     def __init__(self, name, epochs=20, mem=7000, keep=True):
         """Set paths and variables."""
-        self.dir = path.dirname(path.realpath(__file__)) + \
-            '{0}box{0}'.format(sep)
+        self.dir = path.normpath(path.dirname(path.realpath(__file__)) + \
+            '{0}box{0}'.format(sep))
         self.name = name
         self.keep = keep
         self.epochs = epochs
